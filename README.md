@@ -11,7 +11,8 @@ From the root directory, run
 Run
 ====================
 
-`grunt build`\
+`grunt build`
+
 `cd dist/`
 
 Then, from the dist folder:
