@@ -1,0 +1,23 @@
+<section class="favourites">
+  <h2>Favourites artists</h2>
+
+  <ul class="grid-list" ng-if="favourites.length > 0">
+    <li class="col-sm-3" ng-repeat="favourite in favourites">
+      <div class="wrp">
+        <a ui-sref="artistsDetail({ artistId : favourite.id })">
+          <img src="{{favourite.images[0].url || 'http://placehold.it/600x600'}}" class="img-responsive">
+        </a>
+        <a ui-sref="artistsDetail({ artistId : favourite.id })">
+          <p>{{favourite.name}}</p>
+        </a>
+        <span class="fav" ng-click="removeFavourite(favourite.id)">
+          <i class="fa fa-heart"></i>
+        </span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="empty" ng-if="favourites.length == 0">No favourites yet. Add one!</div>
+</section>
+
+<hr>

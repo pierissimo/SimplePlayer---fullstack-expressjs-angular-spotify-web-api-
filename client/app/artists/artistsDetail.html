@@ -1,0 +1,23 @@
+<section class="artist-detail">
+  <div class="header" style="background-image:url({{ artist.images[0].url }})">
+    <h1>{{artist.name}}</h1>
+  </div>
+  <br>
+  <b ng-repeat="genre in artist.genres">{{genre}}{{$last ? '' : ', '}}</b>
+
+  <h3>Albums</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="album in artist.albums">
+        <td><a ui-sref="albums({albumId: album.id})">{{album.name}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<hr>

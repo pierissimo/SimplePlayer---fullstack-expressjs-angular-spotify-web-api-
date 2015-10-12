@@ -1,0 +1,71 @@
+ul.grid-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    margin-bottom: 30px;
+    div.wrp {
+      position: relative;
+      a {
+        position: relative;
+        display: block;
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+        margin: 0;
+        padding: 5px 15px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      span.fav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        padding: 3px 5px;
+        background: rgba(0, 0, 0, 0.6);
+        color: red;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+section.artist-detail, section.album-tracks {
+  > .header {
+    position: relative;
+    padding: 4%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 50%;
+      width: 100%;
+      height: 100%;
+      background: -webkit-linear-gradient(left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      content: '';
+      /* Standard syntax (must be last) */
+    }
+    h1 {
+      position: relative;
+      z-index: 10;
+      color: white;
+    }
+  }
+}
