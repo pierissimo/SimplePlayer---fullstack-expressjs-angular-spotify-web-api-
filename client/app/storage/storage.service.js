@@ -8,16 +8,16 @@ angular.module('simplePlayerApp')
       return localStorageService.get('favourites') || [];
     }
 
-    function addFavourite(albumId){
+    function addFavourite(itemId){
       var favourites = getFavourites();
-      favourites.push(albumId);
+      favourites.push(itemId);
       return localStorageService.set('favourites', favourites);
     }
 
-    function removeFavourite(albumId){
+    function removeFavourite(itemId){
       var favourites = getFavourites();
       _.remove(favourites, function(f) {
-          return f === albumId;
+          return f === itemId;
       });
 
       localStorageService.set('favourites', favourites);

@@ -35,8 +35,8 @@
 
     <div id="main" class="container-fluid">
       <div class="row">
-        <div class="col-xs-2" ng-include="'components/sidebar/sidebar.html'"></div>
-        <div class="col-xs-10" ui-view=""></div>
+        <div class="sidebar col-sm-2" ng-include="'components/sidebar/sidebar.html'"></div>
+        <div class="col-sm-10" ui-view=""></div>
       </div>
     </div>
 
@@ -73,6 +73,9 @@
           <script src="app/artists/artistsDetail.controller.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/player/youtube-player.directive.js"></script>
+          <script src="app/player/youtube.service.js"></script>
+          <script src="app/player/youtube_key.constant.js"></script>
           <script src="app/search/search.directive.js"></script>
           <script src="app/storage/storage.service.js"></script>
           <script src="components/modal/modal.service.js"></script>

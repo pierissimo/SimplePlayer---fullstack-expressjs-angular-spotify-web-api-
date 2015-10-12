@@ -3,20 +3,20 @@
   <div class="col-sm-4 col-sm-offset-3">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-      <input type="text" class="form-control input-lg" ng-model="q" ng-model-options="{ debounce: { 'default': 700, 'blur': 0 } }" placeholder="Search for artists">
+      <input type="text" class="form-control input-lg" ng-model="q" ng-model-options="{ debounce: { 'default': 200, 'blur': 0 } }" placeholder="Search for artists">
     </div>
   </div>
 </div>
 
 
 <section class="results">
-  <ul class="grid-list">
+  <ul class="grid-list" ng-if="results && results.length > 0">
     <li class="col-sm-3" ng-repeat="result in results">
       <div class="wrp">
         <a ui-sref="artistsDetail({ artistId : result.id })">
           <img src="{{result.images[0].url || 'http://placehold.it/600x600'}}" class="img-responsive">
         </a>
-        <a ui-sref="artistsDetail({ artistId : result.id })">
+        <a class="name" ui-sref="artistsDetail({ artistId : result.id })">
           <p>{{result.name}}</p>
         </a>
         <span class="fav" ng-click="toggleFavourite(result.id)">
@@ -26,4 +26,6 @@
       </div>
     </li>
   </ul>
+
+  <p class="empty col-sm-offset-3" ng-if="results.length === 0">No results</p>
 </section>

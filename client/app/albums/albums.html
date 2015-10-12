@@ -3,11 +3,19 @@
   <div class="header" style="background-image:url({{ album.images[0].url }})">
     <h1>{{album.name}} <small>({{album.artists[0].name}})</small></h1>
   </div>
-
-  <div class="media" ng-repeat="track in tracks">
-    <div class="media-body">
-      <h4 class="media-heading">{{track.name}}</h4>
-      <p></p>
-    </div>
-  </div>
+  
+  <youtube-player video="currentPlaying"></youtube-player>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="track in tracks">
+        <td><a href="" ng-click="play(album.artists[0].name + ' - ' + track.name)"><i class="fa fa-play"></i> {{track.name}}</a></td>
+      </tr>
+    </tbody>
+  </table>
 </section>

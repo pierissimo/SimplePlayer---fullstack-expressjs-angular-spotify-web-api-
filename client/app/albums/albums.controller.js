@@ -1,15 +1,31 @@
 'use strict';
 
 angular.module('simplePlayerApp')
-  .controller('AlbumsCtrl', function ($scope, ApiService, $state, $stateParams, _) {
-    var albumId = $stateParams.albumId;
-    if(!albumId) { $state.go('artists'); }
+  .controller('AlbumsCtrl', function ($scope, ApiService, YoutubeService, $state, $stateParams, _) {
+    var albumId;
+    
+    function init(){
+      albumId = $stateParams.albumId;
+      if(!albumId) { $state.go('artists'); }
 
-    ApiService.album(albumId).then(function(data){
-      $scope.album = data;
-      console.log($scope.album);
-    });
-    ApiService.albumTracks(albumId).then(function(data){
-      $scope.tracks = data;
-    });
+      _getData();
+    };
+
+
+    function _getData(){
+      ApiService.album(albumId).then(function(data){
+        $scope.album = data;
+      });
+
+      ApiService.albumTracks(albumId).then(function(data){
+        $scope.tracks = data;
+      });
+    };
+
+
+    $scope.play = function(track){
+      $scope.currentPlaying = track;
+    };
+
+    init();
   });

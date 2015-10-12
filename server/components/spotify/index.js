@@ -17,13 +17,16 @@ function search(query, type){
   return request({
       url:url, 
       qs:query,
-    }).then(function(response){
+    })
+    .then(function(response){
       if(response[0].statusCode !== 200){
         throw new Error(JSON.parse(response[0].body).error.message);
       }
       try{
         
-        var results = _.uniq(JSON.parse(response[0].body)[type + 's'].items, 'name');
+        var results = _.uniq(JSON.parse(response[0].body)[type + 's'].items, function(item){
+          return item.name;
+        });
         
         return results;
       }
@@ -38,7 +41,8 @@ function artists(artistsIds){
   console.log(url);
   return request({
       url:url
-    }).then(function(response){
+    })
+    .then(function(response){
       if(response[0].statusCode !== 200){
         throw new Error(JSON.parse(response[0].body).error.message);
       }
@@ -57,7 +61,8 @@ function album(albumId){
   
   return request({
       url:url
-    }).then(function(response){
+    })
+    .then(function(response){
       if(response[0].statusCode !== 200){
         throw new Error(JSON.parse(response[0].body).error.message);
       }
@@ -75,13 +80,16 @@ function artistAlbums(artistId){
   
   return request({
       url:url
-    }).then(function(response){
+    })
+    .then(function(response){
       if(response[0].statusCode !== 200){
         throw new Error(JSON.parse(response[0].body).error.message);
       }
       try{
 
-        var results = _.uniq(JSON.parse(response[0].body).items, 'name');
+        var results = _.uniq(JSON.parse(response[0].body).items, function(item){
+          return item.name.toLowerCase();
+        });
 
         return results;
       }
@@ -96,7 +104,8 @@ function tracks(albumId){
   
   return request({
       url:url
-    }).then(function(response){
+    })
+    .then(function(response){
       if(response[0].statusCode !== 200){
         throw new Error(JSON.parse(response[0].body).error.message);
       }

@@ -6,11 +6,17 @@ ul.grid-list {
     margin-bottom: 30px;
     div.wrp {
       position: relative;
+      min-height: 150px;
+      img{
+        max-height: 250px;
+        display: block;
+        margin:0 auto;
+      }
       a {
         position: relative;
         display: block;
       }
-      p {
+      a.name {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -66,6 +72,9 @@ section.artist-detail, section.album-tracks {
       position: relative;
       z-index: 10;
       color: white;
+      @media(min-width:768px){
+        max-width: 50%;
+      }
     }
   }
 }

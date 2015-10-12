@@ -2,16 +2,15 @@
 
 angular.module('simplePlayerApp')
   .controller('SidebarCtrl', function ($scope, $location) {
-    $scope.menu = [{
-      'title': 'Home',
+    $scope.menu = [
+    {
+      'title': 'Search',
       'link': '/'
     },
     {
-      'title': 'Artists',
+      'title': 'Favourite Artists',
       'link': '/artists'
     }];
-
-    $scope.isCollapsed = true;
 
     $scope.isActive = function(route) {
       return route === $location.path();

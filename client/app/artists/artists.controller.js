@@ -2,15 +2,12 @@
 
 angular.module('simplePlayerApp')
   .controller('ArtistsCtrl', function ($scope, StorageService, ApiService, $state, $stateParams, _) {
-    var favourites = StorageService.getFavourites();
+    var favourites;
 
-    if(favourites.length > 0){
-      ApiService.artists(StorageService.getFavourites()).then(function(data){
-        $scope.favourites = _.values(_.omit( data, _.isEmpty) );
-      });
-    }else{
-      $scope.favourites = 0;
-    }
+
+    function init(){
+      _getFavourites();
+    };
 
     $scope.removeFavourite = function(itemId){
       StorageService.removeFavourite(itemId);
@@ -18,4 +15,20 @@ angular.module('simplePlayerApp')
         return el.id !== itemId;
       });
     };
+
+
+    function _getFavourites(){
+      favourites = StorageService.getFavourites();
+      if(favourites.length > 0){
+        ApiService.artists(StorageService.getFavourites()).then(function(data){
+          $scope.favourites = _.values(_.omit( data, _.isEmpty) );
+        });
+      }else{
+        $scope.favourites = 0;
+      }
+    };
+
+
+
+    init();
   });

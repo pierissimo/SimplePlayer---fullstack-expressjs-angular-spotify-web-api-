@@ -12,7 +12,6 @@ angular.module('simplePlayerApp')
       },
 
       link: function (scope, element, attrs) {
-        scope.results = [];
 
         scope.launchSearch = function(){
            ApiService.search(scope.q).then(function(data){
